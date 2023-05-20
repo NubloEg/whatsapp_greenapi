@@ -1,0 +1,59 @@
+
+  
+  .friend{
+    cursor: pointer;
+    color:#263035;
+    display: flex;
+    align-items:center;
+    padding: 11px 15px;
+  }
+  .friend:hover{
+    background-color:#F0F2F5;
+  }
+
+  .friend.active{
+    background-color:#F0F2F5;
+  }
+
+  .img_logo{
+    height: 49px;
+    width: 49px;
+    border-radius:50%;
+  }
+
+  .text_friend{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    gap: 6px;
+    max-width: 87%;
+    width: 100%;
+  }
+  .text_header{
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+    align-items:center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+   
+  }
+
+  .friend_day{
+    font-size: 12px;
+    line-height: 14px;
+    color: #89969F;
+  }
+
+  .friend_last_message{
+     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    line-height: 16px;
+    color: #89969F;
+  }
+  
+  

@@ -1,0 +1,72 @@
+.dialog{
+    background-image: url('../../assets/background_message.jpg');
+    height: 100%;
+    position: relative;
+}
+
+
+.dialog_header{
+    background-color:#F0F2F5;
+    
+    padding:  10px 16px;
+    display: flex;
+   gap:10px;
+   align-items:center;
+}
+
+.dialog_user_logo{
+    height:40px;
+    border-radius: 50%;
+    
+}
+.dialog_name{
+    
+    color:#263035;
+}
+
+.dialog_main{
+    color:black;
+    padding: 15px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1156px;
+    max-height: 88%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.dialog_messageFriend{
+    align-self:flex-start;
+    max-width: 100%;
+    padding: 10px 20px;
+    border-radius:10px 10px 10px 0;
+    background-color:rgb(60, 138, 240);
+    word-wrap: break-word;
+}
+
+.dialog_messageMe{
+    align-self:flex-end ;
+    max-width: 100%;
+    padding: 10px 20px;
+    border-radius:10px 10px 0 10px;
+    background-color:rgb(60, 240, 60);
+    word-wrap: break-word;
+}
+
+
+.dialog_footer{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+}
+
+.dialog_textarea{
+    padding: 5px;
+    width: 100%;
+    resize: none;
+    
+}

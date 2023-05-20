@@ -1,0 +1,11 @@
+.input_search{
+    width: 100%;
+    background:none;
+    outline: none;
+}
+
+.input_login{
+    background-color:white;
+    font-size: 18px;
+    padding: 10px 0;
+}
