@@ -9,10 +9,10 @@ export default function Dialog({setFriend,user,idInstLogin,ApiTokenLogin}) {
 React.useEffect(()=>{
   setInterval(()=>{
     getMessages(idInstLogin,ApiTokenLogin).then(resp=>{
-      console.log(resp.data)
+      console.log(resp.data.body)
     })
   },5000)
-},[])
+},[idInstLogin,ApiTokenLogin])
 
   const sendMessage=()=>{
     if (message) {
