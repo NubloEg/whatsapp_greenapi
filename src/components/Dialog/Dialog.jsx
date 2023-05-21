@@ -10,9 +10,15 @@ React.useEffect(()=>{
   setInterval(()=>{
     getMessages(idInstLogin,ApiTokenLogin).then(resp=>{
       console.log(resp.data.body)
+      setFriend({
+        ...user,
+        messages:[
+          ...user.messages,{message:resp.data.body.messageData.textMessageData.textMessage,isMe:false}
+        ]
+      })
     })
   },5000)
-},[idInstLogin,ApiTokenLogin])
+},[idInstLogin,ApiTokenLogin,user,setFriend])
 
   const sendMessage=()=>{
     if (message) {
@@ -41,7 +47,7 @@ React.useEffect(()=>{
             <div className={style.dialog_name}>{user.name}</div>
         </header>
         <main className={style.dialog_main} >
-          {user.messages && user.messages.map(el=> <div className={el.isMe?style.dialog_messageMe:style.dialog_messageFriend}>{el.message}</div>
+          {user.messages && user.messages.map(el=> <div key={el.message} className={el.isMe?style.dialog_messageMe:style.dialog_messageFriend}>{el.message}</div>
           )}
         </main>
         <footer className={style.dialog_footer} >

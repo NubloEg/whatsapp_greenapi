@@ -6,6 +6,7 @@ import search_Icon from '../../assets/icons/search_icon.svg'
 import Input from '../UI/Input'
 
 import {getInfoUser} from '../../api/api'
+import {numberValid} from '../../Valid'
 
 export default function Navigation({user_name,setFriend,photo,ApiTokenLogin,idInstLogin}) {
   const [friends,setFriends]=React.useState([])
@@ -19,20 +20,30 @@ export default function Navigation({user_name,setFriend,photo,ApiTokenLogin,idIn
    }
 
   const addFriend=()=>{
-    
+   const numb=numberValid(searchValue)
   if(searchValue){
-    
-    const date=new Date()
-    const dateNow=`${correctDate(date.getDate())}.${correctDate(date.getMonth())}.${date.getFullYear()}`
-    getInfoUser(searchValue,idInstLogin,ApiTokenLogin)
-    .then(resp=>{
-      console.log(resp.data)
-      setFriends([...friends,{...resp.data,date:dateNow,messages:[]}])
-      setSearchValue('')
+  if ( numb) 
+    {
+      const date=new Date()
+      const dateNow=`${correctDate(date.getDate())}.${correctDate(date.getMonth())}.${date.getFullYear()}`
+        getInfoUser(numb,idInstLogin,ApiTokenLogin)
+        .then(resp=>{
+         
+          const friendNow=friends.find((el)=>el.chatId===`${numb}@c.us`)
+         if(friendNow===undefined){
+          setFriends([...friends,{...resp.data,date:dateNow,messages:[]}])
+          
+         }else{
+          setFriend({name:resp.data.name,photo:resp.data.avatar,chatId:resp.data.chatId,messages:[]})
+         }
+         setSearchValue('')
+         
     })
     .catch(function(err){
         alert('Пользователь не найден')
     })
+    }
+    
   }else{
     
     alert('Введите номер')
@@ -52,7 +63,7 @@ export default function Navigation({user_name,setFriend,photo,ApiTokenLogin,idIn
           <div className={style.navigation_footer}>
           <div className={style.search}>
             <img alt='search_icon' src={search_Icon} className={style.icon_search}/>
-            <Input value={searchValue} onChange={e=>setSearchValue(e.target.value)} placeholder={'Поиск или новый чат'}/>
+            <Input value={searchValue} onChange={e=>setSearchValue(e.target.value)} placeholder={'Введите номер нового чата'}/>
             <button onClick={addFriend} >Создать чат</button>
           </div>
           <div className={style.friends}>
